@@ -18,7 +18,6 @@
 import argparse
 import requests
 import sys
-import ontparser.rdb
 
 def main():
     formats = [
@@ -39,10 +38,7 @@ def main():
     if resp.status_code != 200:
         sys.stderr.write('Converter failure: %s\n', resp.reason)
         sys.exit(1)
-    try:
-        print resp.text.encode('utf-8')
-    except Exception as ex:
-        ontparser.rdb.set_trace()
+    print resp.text.encode('utf-8')
 
 if __name__ == '__main__':
     main()
